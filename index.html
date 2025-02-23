@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For You, My Love</title>
+    <style>
+        /* Page Styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to bottom, #ff9a9e, #fecfef, #fad0c4);
+            background-size: cover;
+            text-align: center;
+            padding: 50px 20px;
+            margin: 0;
+            overflow: hidden;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        h1 {
+            font-size: 28px;
+            color: #fff;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Heart Animation */
+        .heart {
+            position: absolute;
+            color: #ff4d6d;
+            font-size: 20px;
+            animation: float 4s infinite ease-in-out;
+            opacity: 0.6;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+
+            50% {
+                transform: translateY(-100px);
+                opacity: 0.6;
+            }
+
+            100% {
+                transform: translateY(-200px);
+                opacity: 0;
+            }
+        }
+
+        /* Button Styling */
+        button {
+            padding: 12px 24px;
+            font-size: 18px;
+            background: #ff4d6d;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 50px;
+            margin-top: 20px;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
+        }
+
+        button:hover {
+            background: #e43e5c;
+            box-shadow: 0 5px 20px rgba(255, 77, 109, 0.6);
+        }
+
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        /* Message Styling */
+        .message {
+            display: none;
+            font-size: 22px;
+            color: #fff;
+            margin-top: 20px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile Optimization */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 24px;
+            }
+
+            .message {
+                font-size: 18px;
+            }
+
+            button {
+                font-size: 16px;
+                padding: 10px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>For You, My Love 💖</h1>
+    <button id="revealBtn" onclick="showMessage()">Click Me</button>
+
+    <div id="message1" class="message">From the moment we met, I knew you were special. 💕</div>
+    <div id="message2" class="message">Every day with you feels like a new adventure. 🌟</div>
+    <div id="message3" class="message">I want to create more memories with you. 📖</div>
+    <div id="message4" class="message"><strong>I want to reconcile. ❤️</strong></div>
+
+    <script>
+        let currentMessage = 1;
+
+        function showMessage() {
+            if (currentMessage <= 4) {
+                let msg = document.getElementById(`message${currentMessage}`);
+                msg.style.display = 'block';
+                msg.style.animation = 'fadeIn 1s forwards';
+                currentMessage++;
+
+                if (currentMessage > 4) {
+                    document.getElementById("revealBtn").disabled = true;
+                }
+            }
+        }
+
+        // Floating Hearts Animation
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.innerHTML = "❤️";
+            document.body.appendChild(heart);
+
+            const size = Math.random() * 20 + 10 + "px";
+            heart.style.fontSize = size;
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.top = "100vh";
+            heart.style.animationDuration = Math.random() * 2 + 3 + "s";
+
+            setTimeout(() => {
+                heart.remove();
+            }, 4000);
+        }
+
+        setInterval(createHeart, 500);
+    </script>
+
+</body>
+
+</html>
