@@ -1,16 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For You, My Love</title>
+    <title>I'm Sorry, My Love</title>
     <style>
         /* Page Styling */
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(to bottom, #ff9a9e, #fecfef, #fad0c4);
-            background-size: cover;
+            background: linear-gradient(to bottom, #ff758c, #ff7eb3, #ff9eb3);
             text-align: center;
             padding: 50px 20px;
             margin: 0;
@@ -18,42 +16,15 @@
             position: relative;
             min-height: 100vh;
         }
-
         h1 {
-            font-size: 28px;
+            font-size: 30px;
             color: #fff;
             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
         }
 
-        /* Heart Animation */
-        .heart {
-            position: absolute;
-            color: #ff4d6d;
-            font-size: 20px;
-            animation: float 4s infinite ease-in-out;
-            opacity: 0.6;
-        }
-
-        @keyframes float {
-            0% {
-                transform: translateY(0);
-                opacity: 1;
-            }
-
-            50% {
-                transform: translateY(-100px);
-                opacity: 0.6;
-            }
-
-            100% {
-                transform: translateY(-200px);
-                opacity: 0;
-            }
-        }
-
         /* Button Styling */
         button {
-            padding: 12px 24px;
+            padding: 14px 28px;
             font-size: 18px;
             background: #ff4d6d;
             color: white;
@@ -64,12 +35,10 @@
             transition: 0.3s;
             box-shadow: 0 5px 15px rgba(255, 77, 109, 0.4);
         }
-
         button:hover {
             background: #e43e5c;
             box-shadow: 0 5px 20px rgba(255, 77, 109, 0.6);
         }
-
         button:disabled {
             background: #ccc;
             cursor: not-allowed;
@@ -78,24 +47,36 @@
         /* Message Styling */
         .message {
             display: none;
-            font-size: 22px;
+            font-size: 20px;
             color: #fff;
             margin-top: 20px;
             text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
             opacity: 0;
-            animation: fadeIn 1s forwards;
+            animation: fadeIn 1s forwards, bounce 1.5s ease-in-out;
+            max-width: 90%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        /* Floating Flowers Animation */
+        .flower {
+            position: absolute;
+            font-size: 30px;
+            opacity: 0.8;
+            animation: floatUp 4s linear infinite;
+        }
+        @keyframes floatUp {
+            0% { transform: translateY(0); opacity: 1; }
+            50% { transform: translateY(-100px); opacity: 0.6; }
+            100% { transform: translateY(-200px); opacity: 0; }
         }
 
         /* Mobile Optimization */
@@ -103,11 +84,9 @@
             h1 {
                 font-size: 24px;
             }
-
             .message {
                 font-size: 18px;
             }
-
             button {
                 font-size: 16px;
                 padding: 10px 20px;
@@ -115,54 +94,63 @@
         }
     </style>
 </head>
-
 <body>
 
-    <h1>For You, My Love 💖</h1>
+    <h1>I'm Sorry, My Love, Rachel 💔</h1>
     <button id="revealBtn" onclick="showMessage()">Click Me</button>
-
-    <div id="message1" class="message">From the moment we met, I knew you were special. 💕</div>
-    <div id="message2" class="message">Every day with you feels like a new adventure. 🌟</div>
-    <div id="message3" class="message">I want to create more memories with you. 📖</div>
-    <div id="message4" class="message"><strong>I want to reconcile. ❤️</strong></div>
+    
+    <div id="message1" class="message">I just want to take a moment to say that I am truly sorry for the mistakes I’ve made. 😞</div>
+    <div id="message2" class="message">I know that my actions may have hurt you, and that’s the last thing I ever wanted to do. 💔</div>
+    <div id="message3" class="message">Looking back, I realize where I went wrong, and I deeply regret any pain I have caused you. 💭</div>
+    <div id="message4" class="message">You mean so much to me, and I don’t want my mistakes to define what we have. ❤️</div>
+    <div id="message5" class="message">I have been reflecting on myself for days, thinking about every argument we've had. 😞</div>
+    <div id="message6" class="message">I now realize that most of them were unnecessary, and I promise I will never let them happen again. 😞</div>
+    <div id="message7" class="message">I promise to always bring a smile to your face whenever we are together. 😊</div>
+    <div id="message8" class="message">I am willing to learn, grow, and become better—for us. 🥺</div>
+    <div id="message9" class="message"><strong>I love you so much, more than you could ever imagine. ❤️🥺</strong></div>
 
     <script>
         let currentMessage = 1;
-
+        
         function showMessage() {
-            if (currentMessage <= 4) {
+            if (currentMessage <= 9) {
                 let msg = document.getElementById(`message${currentMessage}`);
                 msg.style.display = 'block';
-                msg.style.animation = 'fadeIn 1s forwards';
+                msg.style.animation = 'fadeIn 1s forwards, bounce 1.5s ease-in-out';
+                createFlower();
                 currentMessage++;
 
-                if (currentMessage > 4) {
+                if (currentMessage > 9) {
                     document.getElementById("revealBtn").disabled = true;
                 }
             }
         }
 
-        // Floating Hearts Animation
-        function createHeart() {
-            const heart = document.createElement("div");
-            heart.classList.add("heart");
-            heart.innerHTML = "❤️";
-            document.body.appendChild(heart);
+        // Floating Flowers Animation
+        function createFlower() {
+            const flower = document.createElement("div");
+            flower.classList.add("flower");
 
-            const size = Math.random() * 20 + 10 + "px";
-            heart.style.fontSize = size;
-            heart.style.left = Math.random() * 100 + "vw";
-            heart.style.top = "100vh";
-            heart.style.animationDuration = Math.random() * 2 + 3 + "s";
+            // Random flower emojis
+            const flowerEmojis = ["🌸", "🌺", "🌹", "💐", "🌷"];
+            flower.innerHTML = flowerEmojis[Math.floor(Math.random() * flowerEmojis.length)];
+
+            document.body.appendChild(flower);
+
+            // Random positions
+            const size = Math.random() * 20 + 20 + "px";
+            flower.style.fontSize = size;
+            flower.style.left = Math.random() * 100 + "vw";
+            flower.style.top = "100vh";
+            flower.style.animationDuration = Math.random() * 3 + 2 + "s";
 
             setTimeout(() => {
-                heart.remove();
+                flower.remove();
             }, 4000);
         }
 
-        setInterval(createHeart, 500);
+        setInterval(createFlower, 800);
     </script>
 
 </body>
-
 </html>
